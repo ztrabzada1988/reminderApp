@@ -29,4 +29,10 @@ class App extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        reminder: state
+    }
+}
 
+export default connect(mapStateToProps, {addReminder})(App);
