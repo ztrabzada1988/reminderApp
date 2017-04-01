@@ -14,6 +14,23 @@ class App extends Component {
         this.props.addReminder(this.state.text);
     }
 
+    renderReminders() {
+        const { reminders } = this.props;
+        return (
+            <ul className="list-group col-sm-4">
+                {
+                    reminders.map(reminder => {
+                        return (
+                            <li key={reminder.id} className="list-group-item">
+                                <div>{reminder.text}</div>
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        )
+    }
+
     render() {
         return (
             <div className="App">
@@ -21,9 +38,10 @@ class App extends Component {
                 <div className="form-inline">
                     <div className="form-group">
                         <input onChange={event => this.setState({text: event.target.value})} className="form-control" placeholder="I have to..."/>
-                        <button onClick={() => this.addReminder()} type="button" className="btn btn-success">Add Reminder</button>
                     </div>
+                    <button onClick={() => this.addReminder()} type="button" className="btn btn-success">Add Reminder</button>
                 </div>
+                    { this.renderReminders() }
             </div>
         )
     }
@@ -31,7 +49,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
     return {
-        reminder: state
+        reminders: state
     }
 }
 
