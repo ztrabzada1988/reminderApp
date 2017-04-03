@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { addReminder } from '../actions';
+import { addReminder, deleteReminder } from '../actions';
 
 class App extends Component {
     constructor(props) {
@@ -12,6 +12,12 @@ class App extends Component {
 
     addReminder() {
         this.props.addReminder(this.state.text);
+    }
+
+    deleteReminder(id) {
+      console.log('deleteing in application', id);
+      console.log('this props', this.props);
+
     }
 
     renderReminders() {
@@ -54,5 +60,5 @@ function mapStateToProps(state) {
         reminders: state
     }
 }
-
-export default connect(mapStateToProps, {addReminder})(App);
+// ES6 mapDispathToProps replaced with {addReminder}
+export default connect(mapStateToProps, {addReminder, deleteReminder})(App);
