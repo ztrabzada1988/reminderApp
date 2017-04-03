@@ -1,9 +1,12 @@
 import { ADD_REMINDER, DELETE_REMINDER } from '../constants';
 
 const reminder = (action) => {
+    // ES6 shortcut to replace text: action.text and dueDate: action.dueDate below
+    let { text, dueDate } = action;
     return {
-        text: action.text,
-        id: Math.random()
+        id: Math.random(),
+        text,
+        dueDate
     }
 }
 

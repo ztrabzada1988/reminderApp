@@ -1,9 +1,11 @@
 import { ADD_REMINDER, DELETE_REMINDER } from '../constants';
 
-export const addReminder = (text) => {
+export const addReminder = (text, dueDate) => {
     const action = {
         type: ADD_REMINDER,
-        text
+        // ES6 shortcut if key and value are exactly the same
+        text,
+        dueDate
     }
     console.log('action in addReminder', action);
     return action;
