@@ -8,7 +8,7 @@ const reminder = (action) => {
 }
 
 const removeById = (state=[], id) => {
-  // provide all the ids except the one we specify
+  // dont manipulate state. provide all the ids except the one we specify in a new array (filter)
   const reminders = state.filter(reminder => reminder.id !== id);
   console.log('new reminders', reminders);
   return reminders;
