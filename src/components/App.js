@@ -12,13 +12,33 @@ class App extends Component {
         }
     }
 
-    addReminder() {
+    addReminder(e) {
+        e.preventDefault()
         console.log('this.state.dueDate', this.state.dueDate);
         this.props.addReminder(this.state.text, this.state.dueDate);
+        this.clearFields();
     }
 
     deleteReminder(id) {
       this.props.deleteReminder(id)
+    }
+
+    changeText(e) {
+      console.log(e.target.value);
+      this.setState({text: e.target.value});
+
+    }
+
+    changeDate(e) {
+      console.log(e.target.value);
+      this.setState({dueDate: e.target.value});
+    }
+
+    clearFields() {
+      this.setState({
+          text: '',
+          dueDate: ''
+      });
     }
 
     renderReminders() {
@@ -47,11 +67,11 @@ class App extends Component {
             <div className="App">
                 <div className="title">Reminder App</div>
                 <div className="form-inline reminder-form">
-                    <div className="form-group">
-                        <input onChange={event => this.setState({text: event.target.value})} className="form-control" placeholder="I have to..." />
-                        <input onChange={event => this.setState({dueDate: event.target.value})} className="form-control" type="datetime-local" />
-                    </div>
-                    <button onClick={() => this.addReminder()} type="button" className="btn btn-success">Add Reminder</button>
+                    <form onSubmit={e => {this.addReminder(e)}} className="form-group">
+                        <input onChange={e => this.changeText(e)} className="form-control" placeholder="I have to..." />
+                        <input onChange={e => this.changeDate(e)} className="form-control" type="datetime-local" />
+                        <button type="submit" className="btn btn-success">Add Reminder</button>
+                    </form>
                 </div>
                     { this.renderReminders() }
                     <div className="btn btn-danger" onClick={() => this.props.clearReminders()}>Clear Reminders</div>
