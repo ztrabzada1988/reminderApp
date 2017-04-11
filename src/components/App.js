@@ -16,7 +16,7 @@ class App extends Component {
         e.preventDefault()
         console.log('this.state.dueDate', this.state.dueDate);
         this.props.addReminder(this.state.text, this.state.dueDate);
-        this.clearFields();
+        this.clearFields(e);
     }
 
     deleteReminder(id) {
@@ -24,17 +24,14 @@ class App extends Component {
     }
 
     changeText(e) {
-        console.log(e.target.value);
         this.setState({text: e.target.value});
-
     }
 
     changeDate(e) {
-        console.log(e.target.value);
         this.setState({dueDate: e.target.value});
     }
 
-    clearFields() {
+    clearFields(e) {
         this.setState({
             text: '',
             dueDate: ''
@@ -86,5 +83,6 @@ function mapStateToProps(state) {
         reminders: state
     }
 }
+
 // ES6 mapDispathToProps replaced with {addReminder}
 export default connect(mapStateToProps, {addReminder, deleteReminder, clearReminders})(App);

@@ -42,3 +42,8 @@ input {
 .item-name {
   font-size: 17px;
 }
+
+
+.clearField {
+    margin-left: 9px;
+}
