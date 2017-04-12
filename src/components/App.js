@@ -14,7 +14,6 @@ class App extends Component {
 
     addReminder(e) {
         e.preventDefault()
-        console.log('this.state.dueDate', this.state.dueDate);
         this.props.addReminder(this.state.text, this.state.dueDate);
         this.clearFields(e);
     }
@@ -31,12 +30,12 @@ class App extends Component {
         this.setState({dueDate: e.target.value});
     }
 
-    clearFields(e) {
-        this.setState({
-            text: '',
-            dueDate: ''
-        });
-    }
+//    clearFields(e) {
+//        this.setState({
+//            text: '',
+//            dueDate: ''
+//        });
+//    }
 
     renderReminders() {
         const { reminders } = this.props;
